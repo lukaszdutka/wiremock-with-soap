@@ -1,9 +1,9 @@
 package pl.drogaprogramisty.wiremockwithsoap;
 
+import org.springframework.ws.WebServiceMessage;
 import org.springframework.ws.client.WebServiceClientException;
 import org.springframework.ws.client.support.interceptor.ClientInterceptorAdapter;
 import org.springframework.ws.context.MessageContext;
-import org.springframework.ws.WebServiceMessage;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

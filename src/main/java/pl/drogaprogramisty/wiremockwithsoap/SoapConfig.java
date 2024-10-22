@@ -6,6 +6,11 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.client.support.interceptor.ClientInterceptor;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 @Configuration
 public class SoapConfig {
 
@@ -23,7 +28,28 @@ public class SoapConfig {
         template.setUnmarshaller(marshaller);
 //        template.setDefaultUri("http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?wsdl");
         template.setDefaultUri("http://localhost:8081");
-        template.setInterceptors(new ClientInterceptor[]{new PayloadLoggingInterceptor()});
+
+        //ClientInterceptor[] interceptors
+
+        ClientInterceptor[] interceptors = new ClientInterceptor[1];
+        interceptors[0] = new PayloadLoggingInterceptor();
+//
+//        //zanim request jest wysyłany
+//        for(ClientInterceptor interceptor : interceptors){
+//            interceptor.handleRequest(...);
+//        }
+//
+//        ClientInterceptor[] interceptors2 = new ClientInterceptor[]{new PayloadLoggingInterceptor()};
+//
+
+        template.setInterceptors(interceptors);
         return template;
     }
 }
+
+
+
+
+
+
+
